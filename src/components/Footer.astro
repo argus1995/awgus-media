@@ -1,0 +1,33 @@
+---
+import { SITE_TITLE } from "../conts";
+---
+
+<footer class="bg-gray-800 py-12 object-center">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+    <img
+      src="logo-white.png"
+      alt="Logo"
+      class="w-15 object-contain mx-auto mb-5"
+    />
+    <div class="space-x-4 mb-4">
+      <a href="/privacy" class="hover:text-white transition duration-300"
+        >Privacy Policy</a
+      >
+      <a href="/terms" class="hover:text-white transition duration-300"
+        >Terms & Conditions</a
+      >
+      <a href="/disclaimer" class="hover:text-white transition duration-300"
+        >Disclaimer</a
+      >
+      <a
+        href="/contact"
+        class="hover:text-white transition duration-300"
+        id="contact">Contact</a
+      >
+    </div>
+    <p class="text-sm">
+      &copy; {new Date().getFullYear()}
+      {SITE_TITLE}. All Rights Reserved.
+    </p>
+  </div>
+</footer>
