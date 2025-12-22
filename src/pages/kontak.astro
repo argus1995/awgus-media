@@ -1,0 +1,37 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<MainLayout>
+  <Navbar />
+  <div class="max-w-3xl mx-auto py-16 px-4">
+    <h1 class="text-3xl font-bold mb-4">Kontak</h1>
+
+    <p class="mb-10 text-gray-600">
+      Untuk pertanyaan, kolaborasi, atau diskusi seputar IT, tools, dan konten
+      Awgus Media, silakan hubungi kami melalui email berikut.
+    </p>
+
+    <div class="bg-white rounded-xl shadow p-8 flex items-center gap-6">
+      <div class="text-4xl">📩</div>
+
+      <div>
+        <p class="text-sm text-gray-500 mb-1">Email</p>
+        <a
+          href="mailto:ariefagus1995@gmail.com"
+          class="text-lg font-semibold text-green-600 hover:underline"
+        >
+          ariefagus1995@gmail.com
+        </a>
+      </div>
+    </div>
+
+    <a href="/" class="inline-block mt-10 text-green-600 hover:underline">
+      ← Kembali ke Beranda
+    </a>
+  </div>
+
+  <Footer />
+</MainLayout>

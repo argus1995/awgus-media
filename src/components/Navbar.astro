@@ -2,10 +2,10 @@
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="w-full bg-white shadow p-4 flex items-center justify-between">
+<!-- <header class="w-full bg-white shadow p-4 flex items-center justify-between">
   <div class="flex items-center gap-3">
     <a href="/">
-      <img src="logo.png" alt="Logo" class="w-35 object-contain" />
+      <img src="logo-awgus.png" alt="Logo" class="w-35 object-contain" />
     </a>
   </div>
   <nav class="flex gap-4 font-semibold">
@@ -15,9 +15,19 @@ const currentPath = Astro.url.pathname;
       >Home</a
     >
     <a
-      href="/tools"
-      class={`hover:text-blue-600 ${currentPath.startsWith("/tools") ? "text-blue-600 font-semibold" : ""}`}
-      >Tools</a
+      href="/it-infrastructure"
+      class={`hover:text-blue-600 ${currentPath.startsWith("/it-infrastructure") ? "text-blue-600 font-semibold" : ""}`}
+      >IT Infrastructure</a
+    >
+    <a
+      href="/digital-ops"
+      class={`hover:text-blue-600 ${currentPath.startsWith("/digital-ops") ? "text-blue-600 font-semibold" : ""}`}
+      >Digital Ops</a
+    >
+    <a
+      href="/software-scripts"
+      class={`hover:text-blue-600 ${currentPath.startsWith("/software-scripts") ? "text-blue-600 font-semibold" : ""}`}
+      >Software & Scripts</a
     >
     <a
       href="/about"
@@ -25,4 +35,74 @@ const currentPath = Astro.url.pathname;
       >About</a
     >
   </nav>
+</header> -->
+<header class="w-full bg-white shadow p-4 relative z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <a href="/">
+        <img src="logo-awgus.png" alt="Logo" class="w-35 object-contain" />
+      </a>
+    </div>
+
+    <button
+      id="menu-toggle"
+      class="md:hidden flex flex-col gap-1.5 focus:outline-none p-2"
+      aria-label="Toggle Menu"
+    >
+      <span class="w-4 h-0.5 bg-gray-800 transition-all duration-300" id="line1"
+      ></span>
+      <span class="w-4 h-0.5 bg-gray-800 transition-all duration-300" id="line2"
+      ></span>
+      <span class="w-4 h-0.5 bg-gray-800 transition-all duration-300" id="line3"
+      ></span>
+    </button>
+
+    <nav
+      id="nav-menu"
+      class="hidden absolute top-full left-0 w-full bg-white shadow-md flex-col p-4 gap-4 font-semibold
+             md:flex md:static md:w-auto md:flex-row md:shadow-none md:p-0 md:items-center"
+    >
+      <a
+        href="/"
+        class={`hover:text-green-600 transition-colors ${currentPath === "/" ? "text-green-600" : ""}`}
+        >Home</a
+      >
+      <a
+        href="/it-infrastructure"
+        class={`hover:text-green-600 transition-colors ${currentPath.startsWith("/it-infrastructure") ? "text-green-600" : ""}`}
+        >IT Infrastructure</a
+      >
+      <a
+        href="/digital-ops"
+        class={`hover:text-green-600 transition-colors ${currentPath.startsWith("/digital-ops") ? "text-green-600" : ""}`}
+        >Digital Ops</a
+      >
+      <a
+        href="/software-scripts"
+        class={`hover:text-green-600 transition-colors ${currentPath.startsWith("/software-scripts") ? "text-green-600" : ""}`}
+        >Software & Scripts</a
+      >
+    </nav>
+  </div>
 </header>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const navMenu = document.getElementById("nav-menu");
+  const line1 = document.getElementById("line1");
+  const line2 = document.getElementById("line2");
+  const line3 = document.getElementById("line3");
+
+  menuToggle?.addEventListener("click", () => {
+    // Toggle Menu Visibility
+    navMenu?.classList.toggle("hidden");
+    navMenu?.classList.toggle("flex");
+
+    // Simple Hamburger to "X" Animation
+    line1?.classList.toggle("rotate-45");
+    line1?.classList.toggle("translate-y-2");
+    line2?.classList.toggle("opacity-0");
+    line3?.classList.toggle("-rotate-45");
+    line3?.classList.toggle("-translate-y-2");
+  });
+</script>
