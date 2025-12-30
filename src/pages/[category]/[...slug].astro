@@ -1,0 +1,39 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("blog");
+
+  return allPosts.map((post: CollectionEntry<"blog">) => ({
+    params: {
+      category: post.data.category,
+      slug: post.slug,
+    },
+    props: { post },
+  }));
+}
+
+// Tambahkan definisi tipe data di sini
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<html>
+  <head>
+    <title>{post.data.title}</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Home</a> | Kategori: {post.data.category}
+    </nav>
+
+    <h1>{post.data.title}</h1>
+    <article>
+      <Content />
+    </article>
+  </body>
+</html>

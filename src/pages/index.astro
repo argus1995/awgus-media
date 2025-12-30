@@ -47,6 +47,30 @@ const newArticles = [
     href: "/tools/json-formatter",
   },
 ];
+
+const categories = [
+  {
+    icon: "heroicons:code-bracket",
+    title: "Coding",
+    description:
+      "Berisi pengembangan software, dan script coding praktis untuk membantu pekerjaan IT dan pengembangan sistem.",
+    href: "/coding",
+  },
+  {
+    icon: "heroicons:computer-desktop",
+    title: "Digital Ops",
+    description:
+      "Fokus pada operasional digital, otomasi, workflow, dan tools untuk meningkatkan produktivitas kerja.",
+    href: "/digital-ops",
+  },
+  {
+    icon: "heroicons:server-stack",
+    title: "IT Infrastructure",
+    description:
+      "Membahas jaringan, server, keamanan, dan sistem IT sebagai fondasi operasional yang stabil dan efisien.",
+    href: "/it-infrastructure",
+  },
+];
 ---
 
 <MainLayout>
@@ -66,16 +90,13 @@ const newArticles = [
 
   <!-- Articles Section -->
   <section id="articles" class="max-w-5xl mx-auto py-16 px-4">
-    <h3 class="text-2xl font-bold mb-8 text-center">Artikel Populer</h3>
+    <!-- <h3 class="text-2xl font-bold mb-8 text-center">Artikel Populer</h3>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-      <!-- Tool Card Example -->
       {
         popularArticles.map((article) => (
           <div class="bg-white shadow rounded-lg p-5 hover:shadow-lg transition">
-            {/* Tool Icon & Title/Description */}
             <div class="mb-3 flex justify-center">
               <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 border-2 border-green-200">
-                {/* Use tool.icon data here */}
                 <Icon name={article.icon} class="w-6 h-6" />
               </div>
             </div>
@@ -96,16 +117,13 @@ const newArticles = [
       }
     </div>
 
-    <h3 class="text-2xl font-bold mb-8 text-center">New Tools</h3><div
-      class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20"
-    >
+    <h3 class="text-2xl font-bold mb-8 text-center">New Tools</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
       {
         newArticles.map((article) => (
           <div class="bg-white shadow rounded-lg p-5 hover:shadow-lg transition">
-            {/* Tool Icon & Title/Description */}
             <div class="mb-3 flex justify-center">
               <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 border-2 border-green-200">
-                {/* Use tool.icon data here */}
                 <Icon name={article.icon} class="w-6 h-6" />
               </div>
             </div>
@@ -120,6 +138,33 @@ const newArticles = [
               class="text-green-600 font-medium hover:underline flex justify-center"
             >
               Baca →
+            </a>
+          </div>
+        ))
+      }
+    </div> -->
+
+    <h3 class="text-2xl font-bold mb-8 text-center">Kategori</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+      {
+        categories.map((article) => (
+          <div class="bg-white shadow rounded-lg p-5 hover:shadow-lg transition">
+            <div class="mb-3 flex justify-center">
+              <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 border-2 border-green-200">
+                <Icon name={article.icon} class="w-6 h-6" />
+              </div>
+            </div>
+            <h4 class="text-lg font-semibold mb-2 text-center">
+              {article.title}
+            </h4>
+            <p class="text-sm text-gray-600 mb-4 text-center">
+              {article.description}
+            </p>
+            <a
+              href={article.href}
+              class="text-green-600 font-medium hover:underline flex justify-center"
+            >
+              Kunjungi →
             </a>
           </div>
         ))

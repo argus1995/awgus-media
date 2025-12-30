@@ -40,7 +40,7 @@ const currentPath = Astro.url.pathname;
   <div class="max-w-7xl mx-auto flex items-center justify-between">
     <div class="flex items-center gap-3">
       <a href="/">
-        <img src="logo-awgus.png" alt="Logo" class="w-35 object-contain" />
+        <img src="/logo-awgus.png" alt="Logo" class="w-35 object-contain" />
       </a>
     </div>
 
@@ -68,9 +68,9 @@ const currentPath = Astro.url.pathname;
         >Home</a
       >
       <a
-        href="/it-infrastructure"
-        class={`hover:text-green-600 transition-colors ${currentPath.startsWith("/it-infrastructure") ? "text-green-600" : ""}`}
-        >IT Infrastructure</a
+        href="/coding"
+        class={`hover:text-green-600 transition-colors ${currentPath.startsWith("/coding") ? "text-green-600" : ""}`}
+        >Coding</a
       >
       <a
         href="/digital-ops"
@@ -78,9 +78,9 @@ const currentPath = Astro.url.pathname;
         >Digital Ops</a
       >
       <a
-        href="/software-scripts"
-        class={`hover:text-green-600 transition-colors ${currentPath.startsWith("/software-scripts") ? "text-green-600" : ""}`}
-        >Software & Scripts</a
+        href="/it-infrastructure"
+        class={`hover:text-green-600 transition-colors ${currentPath.startsWith("/it-infrastructure") ? "text-green-600" : ""}`}
+        >IT Infrastructure</a
       >
     </nav>
   </div>
