@@ -1,0 +1,108 @@
+---
+import MainLayout from "./MainLayout.astro";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  coverImage?: ImageMetadata;
+  pubDate: Date;
+  author: string;
+}
+
+const {
+  title,
+  description,
+  category,
+  coverImage,
+  pubDate,
+  author,
+  // tags = [],
+} = Astro.props;
+---
+
+<MainLayout>
+  <article
+    class="max-w-4xl
+  mx-4 sm:mx-auto
+  py-12 sm:py-16
+  px-4 sm:px-6 lg:px-8
+  bg-white my-8 sm:my-16
+  rounded-lg"
+  >
+    <!-- Title -->
+    <h1 class="text-4xl font-bold tracking-tight text-gray-900 mb-4">
+      {title}
+    </h1>
+
+    <!-- Description -->
+    <!-- <p class="text-lg text-gray-600 mb-6">
+      {description}
+    </p> -->
+
+    <!-- Meta -->
+    <div
+      class="flex flex-wrap items-center gap-4 text-sm text-text-muted border-b border-gray-200 pb-6 text-gray-500 mb-8"
+    >
+      <span class="flex items-center gap-1">
+        <Icon name="heroicons:user" class="w-4 h-4" />
+        {author}
+      </span>
+      <span class="flex items-center gap-1">
+        <Icon name="heroicons:calendar" class="w-4 h-4" />
+        <time datetime={pubDate.toISOString()}>
+          {
+            pubDate.toLocaleDateString("id-ID", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          }
+        </time>
+      </span>
+    </div>
+
+    <!-- Hero Image -->
+    {
+      coverImage && (
+        <Image
+          src={coverImage}
+          alt={title}
+          width={1200}
+          height={600}
+          class="w-full rounded-xl mb-10 border bg-gray-100 object-cover"
+          loading="eager"
+        />
+      )
+    }
+
+    <!-- Content -->
+    <div
+      class="prose prose-base sm:prose-lg max-w-none
+            prose-pre:bg-gray-900 prose-pre:text-gray-100"
+    >
+      <slot />
+    </div>
+
+    <!-- Tags -->
+    <!-- {
+      tags.length > 0 && (
+        <div class="mt-12 pt-6 border-t">
+          <h4 class="text-sm font-semibold text-gray-500 mb-3">Tags</h4>
+          <div class="flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <a
+                href={`/tags/${tag}`}
+                class="text-sm px-3 py-1 bg-gray-100 rounded-full text-gray-700 hover:bg-gray-200"
+              >
+                #{tag}
+              </a>
+            ))}
+          </div>
+        </div>
+      )
+    } -->
+  </article>
+</MainLayout>

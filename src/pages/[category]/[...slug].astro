@@ -1,39 +1,45 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
+import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
 
+// 1. Generate paths for every post
 export async function getStaticPaths() {
-  const allPosts = await getCollection("blog");
+  const allPosts = await getCollection("posts");
 
-  return allPosts.map((post: CollectionEntry<"blog">) => ({
-    params: {
-      category: post.data.category,
-      slug: post.slug,
-    },
-    props: { post },
-  }));
+  return allPosts.map((entry) => {
+    // We clean the category string to be URL-friendly (lowercase)
+    const categorySlug = entry.data.category.toLowerCase().replace(/\s+/g, "-");
+
+    // entry.slug automatically handles nested folders
+    // (e.g., 'tech/astro-101' becomes the slug)
+    // We split it to get just the filename part for the [slug]
+    const postSlug = entry.slug.split("/").pop();
+
+    return {
+      params: {
+        category: categorySlug,
+        slug: postSlug,
+      },
+      props: { entry },
+    };
+  });
 }
 
-// Tambahkan definisi tipe data di sini
 interface Props {
-  post: CollectionEntry<"blog">;
+  entry: CollectionEntry<"posts">;
 }
 
-const { post } = Astro.props;
-const { Content } = await post.render();
+const { entry } = Astro.props;
+const { Content } = await entry.render();
 ---
 
-<html>
-  <head>
-    <title>{post.data.title}</title>
-  </head>
-  <body>
-    <nav>
-      <a href="/">Home</a> | Kategori: {post.data.category}
-    </nav>
-
-    <h1>{post.data.title}</h1>
-    <article>
-      <Content />
-    </article>
-  </body>
-</html>
+<BlogPostLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  category={entry.data.category}
+  coverImage={entry.data.coverImage}
+  pubDate={entry.data.pubDate}
+  author={entry.data.author}
+>
+  <Content />
+</BlogPostLayout>

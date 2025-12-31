@@ -1,7 +1,5 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../conts";
 import { Icon } from "astro-icon/components";
 
@@ -74,7 +72,6 @@ const categories = [
 ---
 
 <MainLayout>
-  <Navbar />
   <!-- Hero Section -->
   <section class="text-center py-20 bg-green-600 text-white p-5">
     <h2 class="text-4xl font-bold mb-4">
@@ -171,6 +168,4 @@ const categories = [
       }
     </div>
   </section>
-
-  <Footer />
 </MainLayout>

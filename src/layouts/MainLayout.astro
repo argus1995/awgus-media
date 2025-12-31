@@ -1,5 +1,7 @@
 ---
 import { SITE_TITLE } from "../conts";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <html lang="id">
@@ -11,6 +13,8 @@ import { SITE_TITLE } from "../conts";
     <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body class="bg-gray-50 text-gray-800">
+    <Navbar />
     <slot />
+    <Footer />
   </body>
 </html>
