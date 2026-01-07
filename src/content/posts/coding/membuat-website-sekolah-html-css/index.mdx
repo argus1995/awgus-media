@@ -60,14 +60,24 @@ Berikut full screenshot hasil akhir dari website yang kita akan buat: <a href={F
 
 ### Tools
 
-- [Visual Studio Code](https://code.visualstudio.com/download) (Anda bisa pakai code editor lain)
+- [Visual Studio Code](https://code.visualstudio.com/download) (bisa pakai code editor lain sesuai selera)
 - Browser ([Chrome](https://www.google.com/chrome/) atau Firefox, Edge dll)
 - Internet (Opsional)
 
 ### Kemampuan Teknis
 
-- HTML (Basic)
-- CSS (Basic)
+Disarankan kamu sudah familiar dengan teknologi ini, tetapi kalau sekedar ingin mencoba gapapa, bisa mengikuti artikel ini agar mendapat feel bagaimana cara membuat website.
+
+- HTML
+  - Tag dasar: `<html>`, `<head>`, `<body>`, `<h1>` sampai `<h6>`, dan `<p>`
+  - Elemen semantik: `<header>`, `<nav>`, `<main>`, `<section>`, dan `<footer>`
+- CSS
+  - Custom properties: `:root`
+  - Modern layout (Flexbox dan Grid): `display: flex` dan `display: grid`
+  - Box model & typography
+    - Spacing: `margin`, `padding`, dan `rem`
+    - Shadows & transitions: `box-shadow` dan `transition`
+    - Aspect Ratio: `aspect-ratio`
 
 ### Struktur Folder dan Files
 
@@ -78,19 +88,28 @@ Berikut full screenshot hasil akhir dari website yang kita akan buat: <a href={F
 ├── style.css
 ```
 
-- Buat folder bernama School Website.
+- Buat folder bernama school-website.
 - Di dalam folder buat file bernama index.html
 - Kemudian buat style.css
 - Terakhir download images pada link berikut: [school-website-images](/downloads/school-website-images.zip)
 - Ekstrak images tersebut dan taruh di folder images
+- Buka folder school-website di VS Code
 - Siap untuk ngoding!
 
 ## 4. Mulai Ngoding!
 
-### Index.html
+### index.html
 
-### Header
+Buka file index.html dan buat struktur dasar dengan mengetik manual atau pakai shortcut tanda seru (!). Maka akan muncul seperti ini:
 
-```javascript
-console.log("Astro sangat cepat!");
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
 ```
