@@ -9,6 +9,7 @@ coverImage: "./thumbnail.png"
 
 import { Image } from "astro:assets";
 import FullScreenshot from "./full-screenshot.png";
+import FunFact from "../../../../components/FunFact.astro";
 
 ## 1. Pendahuluan
 
@@ -74,10 +75,20 @@ Disarankan kamu sudah familiar dengan teknologi ini, tetapi kalau sekedar ingin 
 - CSS
   - Custom properties: `:root`
   - Modern layout (Flexbox dan Grid): `display: flex` dan `display: grid`
-  - Box model & typography
-    - Spacing: `margin`, `padding`, dan `rem`
-    - Shadows & transitions: `box-shadow` dan `transition`
-    - Aspect Ratio: `aspect-ratio`
+  - Box model & typog raphy
+  - Spacing: `margin`, `padding`, dan `rem`
+  - Shadows & transitions: `box-shadow` dan `transition`
+  - Aspect Ratio: `aspect-ratio`
+
+<FunFact>
+
+- Kalian bisa mempelajari HTML disini:
+  [W3School](https://www.w3schools.com/html/)
+- Dan mempelajari CSS
+  disini: [W3School](https://www.w3schools.com/css/) atau [Traversy
+  Media](https://youtu.be/yfoY53QXEnI?si=SwKYJJISiUVXwwI0)
+
+</FunFact>
 
 ### Struktur Folder dan Files
 
@@ -98,9 +109,15 @@ Disarankan kamu sudah familiar dengan teknologi ini, tetapi kalau sekedar ingin 
 
 ## 4. Mulai Ngoding!
 
-### index.html
+### 1. Membuat struktur dasar di index.html
 
-Buka file index.html dan buat struktur dasar dengan mengetik manual atau pakai shortcut tanda seru (!). Maka akan muncul seperti ini:
+- Buka file index.html dan buat struktur dasar dengan mengetik manual atau pakai shortcut tanda seru (!).
+- Ganti bahasa menjadi Indonesia `<html lang="id">` (bagus untuk SEO dan aksesibilitas).
+- Ganti judul menjadi nama sekolah `<title>SMKN 1 Nusajaya</title>` (Akan muncul di tab browser).
+- Tambahkan Font Inter `<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+  rel="stylesheet"
+/>`
 
 ```html
 <!DOCTYPE html>
@@ -108,8 +125,23 @@ Buka file index.html dan buat struktur dasar dengan mengetik manual atau pakai s
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>SMKN 1 NUSAJAYA</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="images/logo.png" />
   </head>
-  <body></body>
+  <body>
+    <!-- Nantinya diisi dengan header, main, nav, section dan footer -->
+  </body>
 </html>
 ```
+
+<FunFact>
+
+Jika tidak ada internet Google Font tidak akan berfungsi, tapi kamu bisa pakai cara ini:\
+Cara menggukan font secara offline: [Kevin Powell](https://www.youtube.com/watch?v=zK-yy6C2Nck)
+
+</FunFact>
