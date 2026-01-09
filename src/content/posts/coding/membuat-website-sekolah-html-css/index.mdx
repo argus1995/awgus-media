@@ -67,10 +67,10 @@ Berikut full screenshot hasil akhir dari website yang kita akan buat: <a href={F
 
 ### Kemampuan Teknis
 
-Disarankan kamu sudah familiar dengan teknologi ini, tetapi kalau sekedar ingin mencoba gapapa, bisa mengikuti artikel ini agar mendapat feel bagaimana cara membuat website.
+Disarankan Anda sudah familiar dengan teknologi ini, tetapi kalau sekedar ingin mencoba gapapa, bisa mengikuti artikel ini agar mendapat feel bagaimana cara membuat website.
 
 - HTML
-  - Tag dasar: `<html>`, `<head>`, `<body>`, `<h1>` sampai `<h6>`, dan `<p>`
+  - Tag dasar: `<html>`, `<head>`, `<meta>`, `<title>`, `<link>`, `<body>`, `<h1>` sampai `<h6>`, `<p>`, `<a>`, `<div>`, dan `<img>`
   - Elemen semantik: `<header>`, `<nav>`, `<main>`, `<section>`, dan `<footer>`
 - CSS
   - Custom properties: `:root`
@@ -109,31 +109,37 @@ Disarankan kamu sudah familiar dengan teknologi ini, tetapi kalau sekedar ingin 
 
 ## 4. Mulai Ngoding!
 
-### 1. Membuat struktur dasar di index.html
+### 1. Membuat struktur dasar pada index.html
 
 - Buka file index.html dan buat struktur dasar dengan mengetik manual atau pakai shortcut tanda seru (!).
 - Ganti bahasa menjadi Indonesia `<html lang="id">` (bagus untuk SEO dan aksesibilitas).
-- Ganti judul menjadi nama sekolah `<title>SMKN 1 Nusajaya</title>` (Akan muncul di tab browser).
+- Pastikan kode ini ada `<meta charset="UTF-8" />`. Ini adalah kode instruksi yang berfungsi untuk memastikan browser menampilkan seluruh teks, simbol, dan emoji di halaman web dengan benar.
+- Ini juga harus ada `<meta name="viewport" content="width=device-width, initial-scale=1.0" />` agar website tampil rapi di perangkat mobile (HP dan tablet).
+- Ganti judul menjadi nama sekolah `<title>SMKN 1 Nusajaya</title>` dan tambahkan icon dengan logo `<link rel="icon" type="image/png" href="images/logo.png" />` (Ini akan mengubah judul dan icon pada tab browser)
 - Tambahkan Font Inter `<link
   href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
   rel="stylesheet"
 />`
+- Lalu konekkan atau integrasikan html dengan file style.css `<link rel="stylesheet" href="style.css" />`
+- Berikan tulisan Hello world di dalam body menggunakan h1 untuk sekedar tes `<h1>Hello world!<h1>`
+- Buka file index.html (double klik) di browser, dan pastikan tulisan Hello world sudah muncul, serta judul dan icon tab browser sudah sesuai
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SMKN 1 NUSAJAYA</title>
+    <link rel="icon" type="image/png" href="images/logo.png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/png" href="images/logo.png" />
   </head>
   <body>
+    <h1>Hello world!<h1>
     <!-- Nantinya diisi dengan header, main, nav, section dan footer -->
   </body>
 </html>
@@ -141,7 +147,39 @@ Disarankan kamu sudah familiar dengan teknologi ini, tetapi kalau sekedar ingin 
 
 <FunFact>
 
-Jika tidak ada internet Google Font tidak akan berfungsi, tapi kamu bisa pakai cara ini:\
+Jika tidak ada internet Google Font tidak akan berfungsi, tapi Anda bisa pakai cara ini:\
 Cara menggukan font secara offline: [Kevin Powell](https://www.youtube.com/watch?v=zK-yy6C2Nck)
 
 </FunFact>
+
+### 2. Konfigurasi Variabel dan Reset Dasar CSS pada style.css
+
+- Buka file style.css
+- Buat variabel warna dengan menulis `:root` diikuti dengan masing-masing warnanya. Ini penting karena Digunakan untuk menyimpan kode warna agar konsisten dan mudah diubah di seluruh dokumen.
+- Setelah itu lakukan reset (menghilangkan jarak bawaan browser (margin)) dan tentukan warna latar belakang halaman pada `body`.
+
+```css
+/* ================= VARIABEL WARNA ================= */
+:root {
+  --color-primary: #0c153c;
+  --color-dark: #1e3a8a;
+  --color-cta: #f3a327;
+  --color-bg-light: #f8faff;
+  --color-text-dark: #1f2937;
+}
+
+/* ================= RESET, FONT & BACKGROUND ================= */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
+  margin: 0;
+  padding-top: 64px;
+  line-height: 1.6;
+}
+```
+
+### 3. Pembuatan Header
+
+- Buka kembali file index.html, di dalam body silahkan buat tag `<header></header>`.
+- Kemudian di dalam header masukkan tag `<div></div>` sebagai container/pembungkus dari logo, menu utama dan hamburger menu (muncul ketika di mobile).
