@@ -43,6 +43,7 @@ Berikut full screenshot hasil akhir dari website yang kita akan buat: <a href={F
 ### Fungsi utama
 
 - Menyampaikan identitas sekolah.
+- Pusat informasi sekolah untuk publik.
 - Memberi kesan profesional & terpercaya.
 
 ### Fitur Umum
@@ -179,7 +180,21 @@ body {
 }
 ```
 
+<FunFact>
+
+Bisa dilihat penggunaan variabel warna diatas `var(--color-bg-light)`.
+Bayangkan warna-warna tersebut kita gunakan berulangkali di berbagai bagian di website, jika ada perubahan warna, pastinya repot harus ganti satu-satu.
+
+Tapi dengan variabel warna, kita tidak perlu mengubah di setiap bagian,
+cukup mengganti di bagian `:root`!
+
+</FunFact>
+
 ### 3. Pembuatan Header
 
-- Buka kembali file index.html, di dalam body silahkan buat tag `<header></header>`.
-- Kemudian di dalam header masukkan tag `<div></div>` sebagai container/pembungkus dari logo, menu utama dan hamburger menu (muncul ketika di mobile).
+- Buka kembali file index.html, di dalam body silahkan buat tag `<header></header>`. Berikan class `site-header shadow-lg`.
+- Kemudian di dalam header masukkan tag `<div></div>` sebagai container/pembungkus dari logo, menu utama dan hamburger menu.
+  Berikan class `container header-content`.
+- Sematkan logo dengan tag `<img>` beserta atribut src (source/sumber gambarnya dimana), alt (aksesibilitas dan SEO), serta class `logo-img`.
+- Buat hamburger menu agar tampilan menu utama pada saat diakses di mobile menjadi responsif (menu utama akan tersembunyi dan hamburger menu muncul sebagai toggle).
+- Untuk tag hamburger menu ada dua bagian yaitu `<>`
