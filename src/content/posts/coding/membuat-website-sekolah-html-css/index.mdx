@@ -148,8 +148,10 @@ Disarankan Anda sudah familiar dengan teknologi ini, tetapi kalau sekedar ingin 
 
 <FunFact>
 
-Jika tidak ada internet Google Font tidak akan berfungsi, tapi Anda bisa pakai cara ini:\
-Cara menggukan font secara offline: [Kevin Powell](https://www.youtube.com/watch?v=zK-yy6C2Nck)
+- Jika tidak ada internet Google Font tidak akan berfungsi, tapi Anda bisa pakai cara ini:\
+  Cara menggukan font secara offline: [Kevin Powell](https://www.youtube.com/watch?v=zK-yy6C2Nck)
+- Kode ini dan tulisan di dalamnya `<!-- -->` adalah komentar jadi berpengaruh pada tampilan website.
+  Juga pada CSS kita bisa menggunakan kode ini `/* */`. Pada dasarnya kode ini hanya sebagai penanda atau pengelompokan bagian-bagian kode yang banyak.
 
 </FunFact>
 
@@ -157,16 +159,17 @@ Cara menggukan font secara offline: [Kevin Powell](https://www.youtube.com/watch
 
 - Buka file style.css
 - Buat variabel warna dengan menulis `:root` diikuti dengan masing-masing warnanya. Ini penting karena Digunakan untuk menyimpan kode warna agar konsisten dan mudah diubah di seluruh dokumen.
-- Setelah itu lakukan reset (menghilangkan jarak bawaan browser (margin)) dan tentukan warna latar belakang halaman pada `body`.
+- Setelah itu tentukan font default, lakukan reset (menghilangkan jarak bawaan browser (margin)) dan tentukan warna latar belakang halaman pada `<body></body>`.
 
 ```css
 /* ================= VARIABEL WARNA ================= */
 :root {
   --color-primary: #0c153c;
   --color-dark: #1e3a8a;
-  --color-cta: #f3a327;
+  --color-white: #ffffff;
   --color-bg-light: #f8faff;
   --color-text-dark: #1f2937;
+  --color-cta: #f3a327;
 }
 
 /* ================= RESET, FONT & BACKGROUND ================= */
@@ -192,9 +195,79 @@ cukup mengganti di bagian `:root`!
 
 ### 3. Pembuatan Header
 
+Pertama-tama kita buat dulu struktur HTML-nya.
+
 - Buka kembali file index.html, di dalam body silahkan buat tag `<header></header>`. Berikan class `site-header shadow-lg`.
 - Kemudian di dalam header masukkan tag `<div></div>` sebagai container/pembungkus dari logo, menu utama dan hamburger menu.
   Berikan class `container header-content`.
 - Sematkan logo dengan tag `<img>` beserta atribut src (source/sumber gambarnya dimana), alt (aksesibilitas dan SEO), serta class `logo-img`.
 - Buat hamburger menu agar tampilan menu utama pada saat diakses di mobile menjadi responsif (menu utama akan tersembunyi dan hamburger menu muncul sebagai toggle).
-- Untuk tag hamburger menu ada dua bagian yaitu `<>`
+- Untuk tag hamburger menu ada dua bagian yaitu:
+  - `<input type="checkbox" id="menu-toggle">`: Berperan sebagai penyimpan status (on/off). Kita sembunyikan (yang muncul ikon hamburger). Jangan lupa tambahkan aria-label agar bisa dibaca oleh pengguna Screen Reader.
+  - `<label for="menu-toggle"></label>`: Karena atribut for terhubung dengan id checkbox, mengklik ikon hamburger sama saja dengan mencentang checkbox tersebut. Tambahkan juga class `hamburger` untuk styling.
+    Dan jangan lupa masukkan icon hamburger dengan kode ini `&#9776;`
+- Selanjutnya yaitu pembuatan menu dengan menggunakan tag `<nav class="main-nav" aria-label="Navigasi utama"></nav>` beserta atributnya.
+- Didalamnya kita masukkan list menu-nya menggunakan tag `<a>` dengan atribut href-nya. Ini berfungsi untuk mengarahkan ke section terkait jika diklik. Selain itu berikan class `nav-cta` untuk Daftar PPDB karena styling-nya berbeda.
+
+```html
+<!-- ================= HEADER ================= -->
+<header class="site-header shadow-lg">
+  <div class="container header-content">
+    <!-- Logo Sekolah -->
+    <img src="images/logo.png" alt="Logo SMK Nusajaya" class="logo-img" />
+
+    <!-- Hamburger Menu -->
+    <input type="checkbox" id="menu-toggle" aria-label="Toggle menu" />
+    <label for="menu-toggle" class="hamburger" aria-hidden="true">
+      &#9776;
+    </label>
+
+    <!-- Navigasi Utama -->
+    <nav class="main-nav" aria-label="Navigasi Utama">
+      <a href="#profil">Profil</a>
+      <a href="#program">Program</a>
+      <a href="#prestasi">Prestasi</a>
+      <a href="#galeri">Galeri</a>
+      <a href="#ppdb" class="nav-cta">Daftar PPDB</a>
+    </nav>
+  </div>
+</header>
+```
+
+Struktur html untuk header sudah, sekarang kita styling dengan CSS.
+
+- Buka kembali file style.css.
+- Kita mulai dengan styling class `.site-header` pada `<header>`.
+  - `background-color: white` --> Background warna putih.
+  - `position: fixed`, `z-index: 20`, `top: 0` --> memastikan header tetap posisi di atas, layer di depan dan tidak ada gap/jarak di atas.
+  - `width: 100%` dan `height: 80px` --> panjang 100% dan tinggi 80px.
+
+```css
+/* ================= HEADER ================= */
+.site-header {
+  background-color: white;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  width: 100%;
+  height: 80px;
+}
+```
+
+- Selanjutnya kita tambahkan bayangan atau shadow untuk `<header>` dengan class `.shadow-lg`.
+  Kita gunakan `box-shadow:` disertai dengan posisi dan warnanya.
+- Selain itu buat `.container` untuk pembungkus/wadah item di dalam header.
+- Kita taruh dua class tersebut di atas group `/* ================= HEADER ================= */`
+  dengan nama `/* ================= UTILITAS ================= */`. Dua class ini bisa dipakai berulang-ulang di bagian lain oleh karena itu kita posisikan group ini di atas.
+
+```css
+/* ================= UTILITAS ================= */
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+```
